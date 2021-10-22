@@ -8,11 +8,10 @@ using namespace std;
 int main()
 {
     //Test 1
-    vector<int> vector1{3, 5, -4, 8, 11, 1, -1, 6};
-    int targetSum{10};
-    vector<int> result = twoNumberSum3(vector1, targetSum);
+    vector<int> vector1{5, 1, 22, 25, 6, -1, 8, 10};
+    vector<int> vector2{1, 6, -1, 10};
 
-    printVector(result);
+    cout << isValidSubSequence(vector1, vector2) << endl;
 
 
     return 0;

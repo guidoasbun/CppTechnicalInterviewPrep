@@ -74,3 +74,16 @@ vector<int> twoNumberSum3(vector<int> array, int targetSum)
     }
     return {};
 }
+
+bool isValidSubSequence(const vector<int>& array, const vector<int>& sequence)
+{
+    int arrayIdx{0};
+    int seqIdx{0};
+    while (arrayIdx < array.size() && seqIdx < sequence.size())
+    {
+        if (array[arrayIdx] == sequence[seqIdx])
+            seqIdx++;
+        arrayIdx++;
+    }
+    return seqIdx == sequence.size();
+}

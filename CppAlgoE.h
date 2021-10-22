@@ -15,8 +15,6 @@ std::vector<int> twoNumberSum2(const std::vector<int>& array, int targetSum);
 
 std::vector<int> twoNumberSum3(std::vector<int> array, int targetSum);
 
-class CppAlgoE {
-};
-
+bool isValidSubSequence(std::vector<int> array, std::vector<int> sequence);
 
 #endif //CPPTECHNICALINTERVIEWPREP_CPPALGOE_H
