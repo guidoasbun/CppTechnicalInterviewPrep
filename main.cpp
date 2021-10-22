@@ -11,7 +11,9 @@ int main()
     vector<int> vector1{5, 1, 22, 25, 6, -1, 8, 10};
     vector<int> vector2{1, 6, -1, 10};
 
-    cout << isValidSubSequence(vector1, vector2) << endl;
+
+    cout << isValidSubSequence2(vector1, vector2) << endl;
+
 
 
     return 0;

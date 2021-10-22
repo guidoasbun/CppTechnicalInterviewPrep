@@ -87,3 +87,15 @@ bool isValidSubSequence(const vector<int>& array, const vector<int>& sequence)
     }
     return seqIdx == sequence.size();
 }
+
+bool isValidSubSequence2(const vector<int>& array, const vector<int>& sequence)
+{
+    int seqIdx{0};
+    for (auto value : array) {
+        if (seqIdx == sequence.size())
+            break;
+        if (sequence[seqIdx] == value)
+            seqIdx++;
+    }
+    return seqIdx == sequence.size();
+}

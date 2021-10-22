@@ -17,4 +17,6 @@ std::vector<int> twoNumberSum3(std::vector<int> array, int targetSum);
 
 bool isValidSubSequence(const std::vector<int>& array, const std::vector<int>& sequence);
 
+bool isValidSubSequence2(const std::vector<int>& array, const std::vector<int>& sequence);
+
 #endif //CPPTECHNICALINTERVIEWPREP_CPPALGOE_H
