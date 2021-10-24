@@ -4,7 +4,6 @@
 
 #include "CppAlgoE.h"
 #include <iostream>
-
 #include <vector>
 #include <unordered_set>
 #include <algorithm>
@@ -21,7 +20,7 @@ void printVector(const std::vector<int>& vector)
         cout << vector[i] << " ";
     }
 }
-
+//Two Number Sum
 vector<int> twoNumberSum1(const vector<int>& array, int targetSum)
 {
     // O(n^2) time | O(1) space
@@ -40,7 +39,6 @@ vector<int> twoNumberSum1(const vector<int>& array, int targetSum)
     }
     return {};
 }
-
 vector<int> twoNumberSum2(const vector<int>& array, int targetSum)
 {
     // O(n) time | O(n) space
@@ -54,7 +52,6 @@ vector<int> twoNumberSum2(const vector<int>& array, int targetSum)
     }
     return {};
 }
-
 vector<int> twoNumberSum3(vector<int> array, int targetSum)
 {
     // O(nlog(n)) | O(1) space
@@ -75,6 +72,7 @@ vector<int> twoNumberSum3(vector<int> array, int targetSum)
     return {};
 }
 
+//Validate Subsequence
 bool isValidSubSequence(const vector<int>& array, const vector<int>& sequence)
 {
     int arrayIdx{0};
@@ -87,7 +85,6 @@ bool isValidSubSequence(const vector<int>& array, const vector<int>& sequence)
     }
     return seqIdx == sequence.size();
 }
-
 bool isValidSubSequence2(const vector<int>& array, const vector<int>& sequence)
 {
     int seqIdx{0};
@@ -99,3 +96,5 @@ bool isValidSubSequence2(const vector<int>& array, const vector<int>& sequence)
     }
     return seqIdx == sequence.size();
 }
+
+//Sorted Squared Array
