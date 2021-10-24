@@ -1,4 +1,4 @@
-#include "CppAlgoE.h"
+#include "CppAlgoE/CppAlgoE.h"
 
 #include <iostream>
 #include <vector>
