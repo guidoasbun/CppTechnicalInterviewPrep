@@ -98,3 +98,39 @@ bool isValidSubSequence2(const vector<int>& array, const vector<int>& sequence)
 }
 
 //Sorted Squared Array
+vector<int> sortedSquaredArray1(const vector<int>& array)
+{
+    vector<int> sortedSquares(array.size());
+    for (int i{0}; i < array.size(); ++i)
+    {
+        int value = array[i];
+        sortedSquares[i] = (value*value);
+    }
+
+    sort(sortedSquares.begin(), sortedSquares.end());
+    return sortedSquares;
+}
+vector<int> sortedSquaredArray2(const vector<int>& array)
+{
+    vector<int> sortedSquares(array.size());
+    int smallValIdx = 0;
+    int largeValIdx = array.size()-1;
+
+    for (int i = array.size() - 1; i >= 0; i--)
+    {
+        int smallVal = array[smallValIdx];
+        int largeVal = array[largeValIdx];
+
+        if (abs(smallVal) > abs(largeVal))
+        {
+            sortedSquares[i] = smallVal * smallVal;
+            smallValIdx++;
+        }
+        else
+        {
+            sortedSquares[i] = largeVal * largeVal;
+            largeValIdx--;
+        }
+    }
+    return sortedSquares;
+}
