@@ -3,4 +3,4 @@ project(CppTechnicalInterviewPrep)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CppTechnicalInterviewPrep main.cpp CppAlgoE/CppAlgoE.cpp CppAlgoE/CppAlgoE.h)
+add_executable(CppTechnicalInterviewPrep main.cpp CppAlgoE/CppAlgoE.cpp CppAlgoE/CppAlgoE.h HackerRank/HackerRank.cpp HackerRank/HackerRank.h)

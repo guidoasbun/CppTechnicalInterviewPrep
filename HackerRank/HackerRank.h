@@ -1,0 +1,14 @@
+//
+// Created by Rodrigo Asbun on 10/24/21.
+//
+
+#ifndef CPPTECHNICALINTERVIEWPREP_HACKERRANK_H
+#define CPPTECHNICALINTERVIEWPREP_HACKERRANK_H
+
+void forLoop();
+
+class HackerRank {
+};
+
+
+#endif //CPPTECHNICALINTERVIEWPREP_HACKERRANK_H
