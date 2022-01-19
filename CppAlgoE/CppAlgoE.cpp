@@ -1,5 +1,5 @@
 //
-// Created by Rodrigo Asbun on 9/30/21.
+// Created by Guido Asbun on 9/30/21.
 //
 
 #include "CppAlgoE.h"
@@ -7,22 +7,21 @@
 #include <vector>
 #include <unordered_set>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
-void printVector(const std::vector<int>& vector)
-{
-    size_t vectorLength {vector.size()};
+void printVector(const std::vector<int> &vector) {
+    size_t vectorLength{vector.size()};
     if (vectorLength <= 0)
         cout << "Vector is empty";
-    for (size_t i{0}; i < vectorLength; ++i)
-    {
+    for (size_t i{0}; i < vectorLength; ++i) {
         cout << vector[i] << " ";
     }
 }
+
 //Two Number Sum
-vector<int> twoNumberSum1(const vector<int>& array, int targetSum)
-{
+vector<int> twoNumberSum1(const vector<int> &array, int targetSum) {
     // O(n^2) time | O(1) space
     // Using two for loops
     size_t arrayLength{array.size()};
@@ -38,12 +37,11 @@ vector<int> twoNumberSum1(const vector<int>& array, int targetSum)
     return {};
 }
 
-vector<int> twoNumberSum2(const vector<int>& array, int targetSum)
-{
+vector<int> twoNumberSum2(const vector<int> &array, int targetSum) {
     // O(n) time | O(n) space
     // Using Hash table
     unordered_set<int> nums;
-    for (int num : array) {
+    for (int num: array) {
         int potentialMatch = targetSum - num;
         if (nums.find(potentialMatch) != nums.end())
             return vector<int>{potentialMatch, num};
@@ -53,12 +51,11 @@ vector<int> twoNumberSum2(const vector<int>& array, int targetSum)
     return {};
 }
 
-vector<int> twoNumberSum3(vector<int> array, int targetSum)
-{
+vector<int> twoNumberSum3(vector<int> array, int targetSum) {
     // O(nlog(n)) | O(1) space
     sort(array.begin(), array.end());
     int leftPtr{0};
-    size_t rightPtr {array.size() - 1};
+    size_t rightPtr{array.size() - 1};
     while (leftPtr < rightPtr) {
         int currentSum = array[leftPtr] + array[rightPtr];
         if (currentSum == targetSum)
@@ -74,14 +71,12 @@ vector<int> twoNumberSum3(vector<int> array, int targetSum)
 
 //************************ Validate Subsequence *************************
 
-bool isValidSubSequence(const vector<int>& array, const vector<int>& sequence)
-{
+bool isValidSubSequence(const vector<int> &array, const vector<int> &sequence) {
     // Time = O(N) | Space = O(1)
     // While loop implementation
     int arrayIdx{0};
     int seqIdx{0};
-    while (arrayIdx < array.size() && seqIdx < sequence.size())
-    {
+    while (arrayIdx < array.size() && seqIdx < sequence.size()) {
         if (array[arrayIdx] == sequence[seqIdx])
             seqIdx++;
         arrayIdx++;
@@ -89,12 +84,11 @@ bool isValidSubSequence(const vector<int>& array, const vector<int>& sequence)
     return seqIdx == sequence.size();
 }
 
-bool isValidSubSequence2(const vector<int>& array, const vector<int>& sequence)
-{
+bool isValidSubSequence2(const vector<int> &array, const vector<int> &sequence) {
     // Time = O(N) | Space = O(1)
     // For loop implementation
     int seqIdx{0};
-    for (auto value : array) {
+    for (auto value: array) {
         if (seqIdx == sequence.size())
             break;
         if (sequence[seqIdx] == value)
@@ -105,22 +99,20 @@ bool isValidSubSequence2(const vector<int>& array, const vector<int>& sequence)
 
 //************************ Sorted Squared Array *************************
 
-vector<int> sortedSquaredArray1(const vector<int>& array)
-{
+vector<int> sortedSquaredArray1(const vector<int> &array) {
     // Un-optimal
     // Time = O(n log n) | Space = O(n)
     vector<int> sortedSquares(array.size());
     for (int i{0}; i < array.size(); ++i) {
         int value = array[i];
-        sortedSquares[i] = (value*value);
+        sortedSquares[i] = (value * value);
     }
 
     sort(sortedSquares.begin(), sortedSquares.end());
     return sortedSquares;
 }
 
-vector<int> sortedSquaredArray2(const vector<int>& array)
-{
+vector<int> sortedSquaredArray2(const vector<int> &array) {
     // Time = O(n log n) | Space = O(n)
     vector<int> sortedSquares(array.size());
     int leftPtr{0};
@@ -133,11 +125,44 @@ vector<int> sortedSquaredArray2(const vector<int>& array)
         if (abs(smallVal) > abs(largeVal)) {
             sortedSquares[i] = smallVal * smallVal;
             leftPtr++;
-        }
-        else {
+        } else {
             sortedSquares[i] = largeVal * largeVal;
             rightPtr--;
         }
     }
     return sortedSquares;
 }
+
+//************************ Tournament Winner *************************
+// Time = O(n) | Space = O(k)
+string tournamentWinner1(const vector<vector<string>> &competitions,
+                         const vector<int> &results) {
+    const int HOME_TEAM_WON{1};
+
+    string currentBestTeam;
+    unordered_map<string, int> scores = {{currentBestTeam, 0}};
+
+    for (size_t i{0}, size{competitions.size()}; i < size; ++i) {
+        auto result = results[i];
+        auto competition = competitions[i];
+        auto homeTeam = competition[0];
+        auto awayTeam = competition[1];
+        auto winningTeam = result == HOME_TEAM_WON ? homeTeam : awayTeam;
+
+        updateScores(winningTeam, 3, scores);
+
+        if (scores[winningTeam] > scores[currentBestTeam]) {
+            currentBestTeam = winningTeam;
+        }
+    }
+
+    return currentBestTeam;
+}
+
+void updateScores(const string &team, int points, unordered_map<string, int> &scores) {
+    if (scores.find(team) == scores.end())
+        scores[team] = 0;
+
+    scores[team] += points;
+}
+

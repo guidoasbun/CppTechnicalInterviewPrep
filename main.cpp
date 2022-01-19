@@ -7,12 +7,13 @@
 
 using namespace std;
 
-int main()
-{
-    vector<int> aVector = {-1, -1, 2, 3, 3, 3, 4};
-    vector<int> bVector = sortedSquaredArray1(aVector);
+int main() {
+    vector<vector<string>> competitions = {{"HTML",   "C#"},
+                                           {"C#",     "Python"},
+                                           {"Python", "HTML"}};
+    vector<int> results = {0,0,1};
 
-    printVector(bVector);
+    cout << tournamentWinner1(competitions, results) << endl;
 
     return 0;
 }
