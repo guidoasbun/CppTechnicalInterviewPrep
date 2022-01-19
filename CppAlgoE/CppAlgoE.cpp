@@ -24,24 +24,24 @@ void printVector(const std::vector<int>& vector)
 vector<int> twoNumberSum1(const vector<int>& array, int targetSum)
 {
     // O(n^2) time | O(1) space
+    // Using two for loops
     size_t arrayLength{array.size()};
-    for (size_t i{0}; i < arrayLength - 1; ++i)
-    {
+    for (size_t i{0}; i < arrayLength - 1; ++i) {
         int firstNum = array[i];
-        for (size_t j{i + 1}; j < arrayLength; ++j)
-        {
+        for (size_t j{i + 1}; j < arrayLength; ++j) {
             int secondNum = array[j];
-            if (firstNum + secondNum == targetSum)
-            {
+            if (firstNum + secondNum == targetSum) {
                 return vector<int>{firstNum, secondNum};
             }
         }
     }
     return {};
 }
+
 vector<int> twoNumberSum2(const vector<int>& array, int targetSum)
 {
     // O(n) time | O(n) space
+    // Using Hash table
     unordered_set<int> nums;
     for (int num : array) {
         int potentialMatch = targetSum - num;
@@ -52,29 +52,32 @@ vector<int> twoNumberSum2(const vector<int>& array, int targetSum)
     }
     return {};
 }
+
 vector<int> twoNumberSum3(vector<int> array, int targetSum)
 {
     // O(nlog(n)) | O(1) space
     sort(array.begin(), array.end());
-    int left{0};
-    size_t right {array.size() - 1};
-    while (left < right)
-    {
-        int currentSum = array[left] + array[right];
+    int leftPtr{0};
+    size_t rightPtr {array.size() - 1};
+    while (leftPtr < rightPtr) {
+        int currentSum = array[leftPtr] + array[rightPtr];
         if (currentSum == targetSum)
-            return {array[left], array[right]};
+            return {array[leftPtr], array[rightPtr]};
         else if (currentSum < targetSum)
-            left++;
+            leftPtr++;
         else if (currentSum > targetSum) {
-            right--;
+            rightPtr--;
         }
     }
     return {};
 }
 
-//Validate Subsequence
+//************************ Validate Subsequence *************************
+
 bool isValidSubSequence(const vector<int>& array, const vector<int>& sequence)
 {
+    // Time = O(N) | Space = O(1)
+    // While loop implementation
     int arrayIdx{0};
     int seqIdx{0};
     while (arrayIdx < array.size() && seqIdx < sequence.size())
@@ -85,8 +88,11 @@ bool isValidSubSequence(const vector<int>& array, const vector<int>& sequence)
     }
     return seqIdx == sequence.size();
 }
+
 bool isValidSubSequence2(const vector<int>& array, const vector<int>& sequence)
 {
+    // Time = O(N) | Space = O(1)
+    // For loop implementation
     int seqIdx{0};
     for (auto value : array) {
         if (seqIdx == sequence.size())
@@ -97,12 +103,14 @@ bool isValidSubSequence2(const vector<int>& array, const vector<int>& sequence)
     return seqIdx == sequence.size();
 }
 
-//Sorted Squared Array
+//************************ Sorted Squared Array *************************
+
 vector<int> sortedSquaredArray1(const vector<int>& array)
 {
+    // Un-optimal
+    // Time = O(n log n) | Space = O(n)
     vector<int> sortedSquares(array.size());
-    for (int i{0}; i < array.size(); ++i)
-    {
+    for (int i{0}; i < array.size(); ++i) {
         int value = array[i];
         sortedSquares[i] = (value*value);
     }
@@ -110,26 +118,25 @@ vector<int> sortedSquaredArray1(const vector<int>& array)
     sort(sortedSquares.begin(), sortedSquares.end());
     return sortedSquares;
 }
+
 vector<int> sortedSquaredArray2(const vector<int>& array)
 {
+    // Time = O(n log n) | Space = O(n)
     vector<int> sortedSquares(array.size());
-    int smallValIdx = 0;
-    int largeValIdx = array.size()-1;
+    int leftPtr{0};
+    int rightPtr = array.size() - 1;
 
-    for (int i = array.size() - 1; i >= 0; i--)
-    {
-        int smallVal = array[smallValIdx];
-        int largeVal = array[largeValIdx];
+    for (int i = array.size() - 1; i >= 0; --i) {
+        int smallVal = array[leftPtr];
+        int largeVal = array[rightPtr];
 
-        if (abs(smallVal) > abs(largeVal))
-        {
+        if (abs(smallVal) > abs(largeVal)) {
             sortedSquares[i] = smallVal * smallVal;
-            smallValIdx++;
+            leftPtr++;
         }
-        else
-        {
+        else {
             sortedSquares[i] = largeVal * largeVal;
-            largeValIdx--;
+            rightPtr--;
         }
     }
     return sortedSquares;
