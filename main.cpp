@@ -8,12 +8,7 @@
 using namespace std;
 
 int main() {
-    vector<vector<string>> competitions = {{"HTML",   "C#"},
-                                           {"C#",     "Python"},
-                                           {"Python", "HTML"}};
-    vector<int> results = {0,0,1};
+    vector<int> coins = {5, 7, 1, 1, 2, 3, 22};
 
-    cout << tournamentWinner1(competitions, results) << endl;
-
-    return 0;
+    cout << nonConstructableChange(coins);
 }

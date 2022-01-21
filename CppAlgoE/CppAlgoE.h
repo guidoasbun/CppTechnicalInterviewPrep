@@ -33,4 +33,6 @@ std::string tournamentWinner1(const std::vector<std::vector<std::string>> &compe
 
 void updateScores(const std::string &team, int points, std::unordered_map<std::string, int> &scores);
 
+// Non-Constructable Change
+int nonConstructableChange(std::vector<int>& coins);
 #endif //CPPTECHNICALINTERVIEWPREP_CPPALGOE_H

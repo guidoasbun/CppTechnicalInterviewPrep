@@ -166,3 +166,20 @@ void updateScores(const string &team, int points, unordered_map<string, int> &sc
     scores[team] += points;
 }
 
+//************************ Non-Constructable Change *************************
+// Time = O(n log n) | Space = O(1) sorted in space, or O(n) if not sorted in space
+int nonConstructableChange(std::vector<int>& coins){
+    sort(coins.begin(), coins.end());
+    int currentChangeCreated{0};
+
+    for (int coin : coins) {
+        if (coin > currentChangeCreated + 1)
+            return currentChangeCreated + 1;
+
+        currentChangeCreated += coin;
+    }
+
+    return currentChangeCreated + 1;
+}
+
+

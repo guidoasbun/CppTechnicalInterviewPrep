@@ -7,8 +7,5 @@
 
 void forLoop();
 
-class HackerRank {
-};
-
 
 #endif //CPPTECHNICALINTERVIEWPREP_HACKERRANK_H
