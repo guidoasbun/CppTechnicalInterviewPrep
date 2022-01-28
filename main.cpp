@@ -1,5 +1,6 @@
 #include "CppAlgoE/CppAlgoE.h"
 #include "HackerRank/HackerRank.h"
+#include "LeetCode/CppLeetCode.h"
 
 #include <iostream>
 #include <vector>
@@ -8,7 +9,10 @@
 using namespace std;
 
 int main() {
-    vector<int> coins = {5, 7, 1, 1, 2, 3, 22};
+    vector<int> aVector = {2,7,11,15};
 
-    cout << nonConstructableChange(coins);
+    vector<int> result = twoSum(aVector, 9);
+
+    printVector(result);
+
 }
